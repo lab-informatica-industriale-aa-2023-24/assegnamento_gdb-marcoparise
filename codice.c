@@ -24,7 +24,7 @@ void fai_spazio(int posizione, int *vett, int lung)
 
 void inserisci(int nuovo_dato, int num_dati_ord, int *vett)
 { 
-	if (num_dati_ord = 0)  { // il vettore è vuoto, facile
+	if (num_dati_ord == 0)  { // il vettore è vuoto, facile			secondo errore: mancanza del doppio uguale nell'if
 		vett[0] = nuovo_dato;
 		return;
 	}
