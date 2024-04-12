@@ -40,9 +40,9 @@ void inserisci(int nuovo_dato, int num_dati_ord, int *vett)
 	}
 }
 
-void ordina_dati(const int *dati_non_ordinati, int *dati_ordinati)
+void ordina_dati(const int *dati_non_ordinati, int *dati_ordinati, int num_dati_input)
 {
-	int num_dati = MAX_INPUT;					//Primo errore: sizeof di un puntatore non mi da la dimensione del vettore
+	int num_dati = num_dati_input;					//Primo errore: sizeof di un puntatore non mi da la dimensione del vettore
 	for (int i = 0; i < num_dati; ++i)
 		inserisci(dati_non_ordinati[i], i, dati_ordinati);
 }
@@ -65,7 +65,11 @@ int main(int argc, char **argv)
 	int num_dati = 0;
 
 	estrai_dati(argc, argv, dati_input, &num_dati);
-	ordina_dati(dati_input, dati_ordinati);
+
+	int num_dati_input = sizeof(dati_input)/sizeof(dati_input[0]);
+	ordina_dati(dati_input, dati_ordinati, num_dati_input);
+
 	stampa_vettore(dati_ordinati, num_dati);
 	return 0;
 }
+
