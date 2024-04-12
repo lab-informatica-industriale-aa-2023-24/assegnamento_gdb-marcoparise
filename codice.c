@@ -42,7 +42,7 @@ void inserisci(int nuovo_dato, int num_dati_ord, int *vett)
 
 void ordina_dati(const int *dati_non_ordinati, int *dati_ordinati)
 {
-	int num_dati = sizeof(dati_non_ordinati) / sizeof(dati_non_ordinati[0]);
+	int num_dati = MAX_INPUT;					//Primo errore: sizeof di un puntatore non mi da la dimensione del vettore
 	for (int i = 0; i < num_dati; ++i)
 		inserisci(dati_non_ordinati[i], i, dati_ordinati);
 }
