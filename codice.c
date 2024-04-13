@@ -18,8 +18,8 @@ void estrai_dati(int ac, char **av, int *vett, int *lung)
 
 void fai_spazio(int posizione, int *vett, int lung)
 {
-	for (int j = lung - 1; j > posizione; --j)		//terzo errore: con ++j il ciclo for va avanti all'infinito 
-		vett[j] = vett[j-1];
+	for (int j = lung; j > posizione; --j)		//terzo errore: con ++j il ciclo for va avanti all'infinito e j deve essere = a lung non
+		vett[j] = vett[j-1];			//lung-1
 }
 
 void inserisci(int nuovo_dato, int num_dati_ord, int *vett)
@@ -36,8 +36,13 @@ void inserisci(int nuovo_dato, int num_dati_ord, int *vett)
 			fai_spazio(i, vett, num_dati_ord);
 			vett[i] = nuovo_dato;
 			return;
+
 		}
+
 	}
+	vett[num_dati_ord] = nuovo_dato;				//quarto errore: se il numero non e' minore di quelli precedenti non viene
+	return;								//salvato
+		
 }
 
 void ordina_dati(const int *dati_non_ordinati, int *dati_ordinati, int num_dati_input)
@@ -66,8 +71,7 @@ int main(int argc, char **argv)
 
 	estrai_dati(argc, argv, dati_input, &num_dati);
 
-	int num_dati_input = sizeof(dati_input)/sizeof(dati_input[0]);
-	ordina_dati(dati_input, dati_ordinati, num_dati_input);
+	ordina_dati(dati_input, dati_ordinati, num_dati);
 
 	stampa_vettore(dati_ordinati, num_dati);
 	return 0;
